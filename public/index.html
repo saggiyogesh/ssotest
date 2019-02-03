@@ -23,9 +23,6 @@
      a{
      text-decoration:none !important;
      }
-     h1,h2,h3{
-     font-family: 'Kaushan Script', cursive;
-     }
      .myform, #json{
      position: relative;
      display: -ms-flexbox;
@@ -180,16 +177,17 @@
               <form action="" method="post" name="login">
                   <div class="form-group">
                       <p class="text-center">
-                        Login required to <b>POST</b> on <a href="/light-sailed-info">/light-sailed-info</a> api 
+                        Get <b>id_token</b> from login to get response from 
+                         <a href="/light-sailed-info">/light-sailed-info</a> api 
                       </p>
                    </div>
                  <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" name="email"  class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                    <input type="email" name="email"  class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" value="testsso@euro.com">
                  </div>
                  <div class="form-group">
                     <label for="exampleInputEmail1">Password</label>
-                    <input type="password" name="password" id="password"  class="form-control" aria-describedby="emailHelp" placeholder="Enter Password">
+                    <input type="password" name="password" id="password"  class="form-control" aria-describedby="emailHelp" placeholder="Enter Password" value="Qaz123wsx">
                  </div>
                  <div class="col-md-12 text-center ">
                     <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Login</button>
@@ -200,18 +198,40 @@
         
      </div>
 
+     <div class="col-md-5 mx-auto">
+        <div id="first">
+           <div class="myform form ">
+              <div class="logo mb-3">
+                 <div class="col-md-12 text-center">
+                    <h1>Post to <i>/light-sailed-info</i> api </h1>
+                 </div>
+              </div>
+              <form action="" method="post" name="api">
+                  <div class="form-group">
+                      <p class="text-center">
+                        Login required to <b>POST</b> on <a href="/light-sailed-info">/light-sailed-info</a> api 
+                      </p>
+                   </div>
+                 <div class="form-group">
+                    <input type="text" name="token" class="form-control" id="token"  placeholder="Enter / paste token">
+                 </div>
+                 <div class="col-md-12 text-center ">
+                    <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Submit</button>
+                 </div>
+              </form>
+           </div>
+        </div>
+        
+     </div>
+
      <div class="col-md-12 mx-auto">
 
         <div id="json" style="display: none; max-width: 100%">
-            <p class="text-center">
-                Response from <a href="/light-sailed-info">/light-sailed-info</a> api 
+            <p class="text-center" >
+                Response
             </p>
             <div id="jsonRes"></div>
 
-            <p class="text-center">
-                <b>Token </b> 
-            </p>
-            <pre id="token"></pre>
         </div>
      </div>
   </div>

@@ -20,6 +20,48 @@ $('#signin').click(function() {
   });
 });
 
+function postAPI(token) {
+  console.log('token', token);
+  $.ajax({
+    url: '/light-sailed-info',
+    type: 'POST',
+    // data: JSON.stringify({ token }),
+    contentType: 'application/json; charset=utf-8',
+    dataType: 'json',
+    crossDomain: true,
+    cache: false,
+    processData: false,
+    headers: {
+      Authorization: token
+    },
+    success: function(data) {
+      console.log('data--->>', data);
+      const user = data.user;
+      const json = _.pick(user, [
+        'firstName',
+        'lastName',
+        'email',
+        'gender',
+        'dob',
+        'address',
+        'id'
+      ]);
+      $('#json').show();
+      $('#jsonRes').jsonPresenter({
+        json
+      });
+      $('#token').text(token);
+    },
+    error: function(err) {
+      console.log('err', err);
+      alert(
+        `${err.responseJSON.error.message} - ${
+          err.responseJSON.error.statusCode
+        }`
+      );
+    }
+  });
+}
 $(function() {
   $("form[name='login']").validate({
     rules: {
@@ -61,44 +103,15 @@ $(function() {
         cache: false,
         processData: false,
         success: function(data) {
-          alert('Login success.. POSTing to Light sailed api');
+          // alert('Login success.. POSTing to Light sailed api');
           console.log('arguments success', arguments);
-          $('#first').hide();
+          // $('#first').hide();
 
-          const token = data.id_token;
-          $.ajax({
-            url: '/light-sailed-info',
-            type: 'POST',
-            // data: JSON.stringify({ token }),
-            contentType: 'application/json; charset=utf-8',
-            dataType: 'json',
-            crossDomain: true,
-            cache: false,
-            processData: false,
-            headers: {
-              Authorization: token
-            },
-            success: function(data) {
-              console.log('data--->>', data);
-              const user = data.user;
-              const json = _.pick(user, [
-                'firstName',
-                'lastName',
-                'email',
-                'gender',
-                'dob',
-                'address',
-                'id'
-              ]);
-              $('#json').show();
-              $('#jsonRes').jsonPresenter({
-                json
-              });
-              $('#token').text(token);
-            },
-            error: function(err) {
-              alert('Invalid token');
-            }
+          const id_token = data.id_token;
+
+          $('#json').show();
+          $('#jsonRes').jsonPresenter({
+            json: { id_token }
           });
         },
         error: function(res, textStatus) {
@@ -113,5 +126,15 @@ $(function() {
         }
       });
     }
+  });
+
+  $("form[name='api']").on('submit', function(e) {
+    e.preventDefault();
+    console.log('tis', this);
+    postAPI($("input[name='token']").val());
+  });
+
+  $('button').on('click', function(e) {
+    $('#json').hide();
   });
 });
