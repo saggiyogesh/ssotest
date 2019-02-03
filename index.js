@@ -20,7 +20,7 @@ app.post('/light-sailed-info', async (req, res) => {
     res.send(data);
   } catch (err) {
     console.log('errr', err);
-    res.status(500).send(err);
+    res.status(err.response.status || 500).send(err.response.data);
   }
 });
 
