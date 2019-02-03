@@ -1,0 +1,18 @@
+pipeline:
+  docker:
+    image: plugins/docker
+    registry: registry.learnindialearn.in:5000
+    username: docker
+    password: yogesh12
+    repo: registry.learnindialearn.in:5000/ssotest-euro
+    insecure: true
+    auto_tag: true
+
+  ssh:
+    image: appleboy/drone-ssh
+    host: lil-hosts.learnindialearn.in
+    username: root
+    port: 22
+    secrets: [ ssh_password ]
+    script:
+      - cd ssotest-euro/ && sh deploy.sh
