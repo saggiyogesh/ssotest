@@ -1,0 +1,204 @@
+<head>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!------ Include the above in your HEAD tag ---------->
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+  </link>
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+  <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://www.jqueryscript.net/demo/Render-JSON-Schema-In-HTML-jQuery-JSON-Presenter/jquery.jsonPresenter.css">
+  
+  <!-- <link rel="stylesheet" href="https://github.hubspot.com/pace/docs/resources/flash-white.css"> -->
+
+
+  <style>
+     body{
+     padding-top:4.2rem;
+     padding-bottom:4.2rem;
+     background:rgba(0, 0, 0, 0.76);
+     }
+     a{
+     text-decoration:none !important;
+     }
+     h1,h2,h3{
+     font-family: 'Kaushan Script', cursive;
+     }
+     .myform, #json{
+     position: relative;
+     display: -ms-flexbox;
+     display: flex;
+     padding: 1rem;
+     -ms-flex-direction: column;
+     flex-direction: column;
+     width: 100%;
+     pointer-events: auto;
+     background-color: #fff;
+     background-clip: padding-box;
+     border: 1px solid rgba(0,0,0,.2);
+     border-radius: 1.1rem;
+     outline: 0;
+     max-width: 500px;
+     }
+     .tx-tfm{
+     text-transform:uppercase;
+     }
+     .mybtn{
+     border-radius:50px;
+     }
+     .login-or {
+     position: relative;
+     color: #aaa;
+     margin-top: 10px;
+     margin-bottom: 10px;
+     padding-top: 10px;
+     padding-bottom: 10px;
+     }
+     .span-or {
+     display: block;
+     position: absolute;
+     left: 50%;
+     top: -2px;
+     margin-left: -25px;
+     background-color: #fff;
+     width: 50px;
+     text-align: center;
+     }
+     .hr-or {
+     height: 1px;
+     margin-top: 0px !important;
+     margin-bottom: 0px !important;
+     }
+     .google {
+     color:#666;
+     width:100%;
+     height:40px;
+     text-align:center;
+     outline:none;
+     border: 1px solid lightgrey;
+     }
+     form .error {
+     color: #ff0000;
+     }
+     #second{display:none;}
+  </style>
+  
+  <style>
+    
+    .pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.pace-inactive {
+  display: none;
+}
+
+.pace .pace-progress {
+  background: #29d;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  height: 2px;
+}
+
+.pace .pace-progress-inner {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 10px #29d, 0 0 5px #29d;
+  opacity: 1.0;
+  -webkit-transform: rotate(3deg) translate(0px, -4px);
+  -moz-transform: rotate(3deg) translate(0px, -4px);
+  -ms-transform: rotate(3deg) translate(0px, -4px);
+  -o-transform: rotate(3deg) translate(0px, -4px);
+  transform: rotate(3deg) translate(0px, -4px);
+}
+
+.pace .pace-activity {
+  display: block;
+  position: fixed;
+  z-index: 2000;
+  top: 15px;
+  right: 15px;
+  width: 14px;
+  height: 14px;
+  border: solid 2px transparent;
+  border-top-color: #29d;
+  border-left-color: #29d;
+  border-radius: 10px;
+  -webkit-animation: pace-spinner 400ms linear infinite;
+  -moz-animation: pace-spinner 400ms linear infinite;
+  -ms-animation: pace-spinner 400ms linear infinite;
+  -o-animation: pace-spinner 400ms linear infinite;
+  animation: pace-spinner 400ms linear infinite;
+}
+
+@-webkit-keyframes pace-spinner {
+  0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-moz-keyframes pace-spinner {
+  0% { -moz-transform: rotate(0deg); transform: rotate(0deg); }
+  100% { -moz-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-o-keyframes pace-spinner {
+  0% { -o-transform: rotate(0deg); transform: rotate(0deg); }
+  100% { -o-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-ms-keyframes pace-spinner {
+  0% { -ms-transform: rotate(0deg); transform: rotate(0deg); }
+  100% { -ms-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@keyframes pace-spinner {
+  0% { transform: rotate(0deg); transform: rotate(0deg); }
+  100% { transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+  <div class="row">
+     <div class="col-md-5 mx-auto">
+        <div id="first">
+           <div class="myform form ">
+              <div class="logo mb-3">
+                 <div class="col-md-12 text-center">
+                    <h1>Login</h1>
+                 </div>
+              </div>
+              <form action="" method="post" name="login">
+                 <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" name="email"  class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                 </div>
+                 <div class="form-group">
+                    <label for="exampleInputEmail1">Password</label>
+                    <input type="password" name="password" id="password"  class="form-control" aria-describedby="emailHelp" placeholder="Enter Password">
+                 </div>
+                 <div class="col-md-12 text-center ">
+                    <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Login</button>
+                 </div>
+              </form>
+           </div>
+        </div>
+        <div id="json" style="display: none"></div>
+     </div>
+  </div>
+  <script src="https://www.jqueryscript.net/demo/Render-JSON-Schema-In-HTML-jQuery-JSON-Presenter/jquery.jsonPresenter.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js"></script>
+
+  <script src="https://github.hubspot.com/pace/pace.js"></script>
+  
+  <script src="script.js"></script>
+</body>
