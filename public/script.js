@@ -61,7 +61,7 @@ $(function() {
         cache: false,
         processData: false,
         success: function(data) {
-          alert('Login success.. Redirecting to Light sailed api');
+          alert('Login success.. POSTing to Light sailed api');
           console.log('arguments success', arguments);
           $('#first').hide();
 
@@ -91,9 +91,10 @@ $(function() {
                 'id'
               ]);
               $('#json').show();
-              $('#json').jsonPresenter({
+              $('#jsonRes').jsonPresenter({
                 json
               });
+              $('#token').text(token);
             },
             error: function(err) {
               alert('Invalid token');

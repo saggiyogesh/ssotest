@@ -178,6 +178,11 @@
                  </div>
               </div>
               <form action="" method="post" name="login">
+                  <div class="form-group">
+                      <p class="text-center">
+                        Login required to <b>POST</b> on <a href="/light-sailed-info">/light-sailed-info</a> api 
+                      </p>
+                   </div>
                  <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
                     <input type="email" name="email"  class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
@@ -192,7 +197,22 @@
               </form>
            </div>
         </div>
-        <div id="json" style="display: none"></div>
+        
+     </div>
+
+     <div class="col-md-12 mx-auto">
+
+        <div id="json" style="display: none; max-width: 100%">
+            <p class="text-center">
+                Response from <a href="/light-sailed-info">/light-sailed-info</a> api 
+            </p>
+            <div id="jsonRes"></div>
+
+            <p class="text-center">
+                <b>Token </b> 
+            </p>
+            <pre id="token"></pre>
+        </div>
      </div>
   </div>
   <script src="https://www.jqueryscript.net/demo/Render-JSON-Schema-In-HTML-jQuery-JSON-Presenter/jquery.jsonPresenter.js"></script>
